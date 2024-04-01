@@ -1,0 +1,212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={State-space vonB growth model with environmental covariates},
+  pdfauthor={K. K. Holsman, J. Ianelli, et al.},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{State-space vonB growth model with environmental covariates}
+\author{K. K. Holsman, J. Ianelli, et al.}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+Last updated: Nov 13, 2023
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Add intro paragraph about climate effects on growth
+\end{itemize}
+
+Water temperature is known to directly impact growth through influencing
+metabolic and digestion rates, which often scale exponentially with body
+weight and temperature (see Hanson et al., 1997 for an overview).
+
+(based on \url{https://seananderson.ca/2014/10/17/tmb/})
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+\hypertarget{temperature-specific-weight-at-age}{%
+\subsection{Temperature specific weight at
+age}\label{temperature-specific-weight-at-age}}
+
+We modified the generalized formulation of the von Bertalanffy growth
+function (VBGF; von Bertalanffy 1938; Pauly 1981; Temming 1994) to
+predict temperature-dependent growth by allowing the allometric scaling
+parameter \(d\) to increase with temperature. Essington et al.~(2010)
+and Holsman and Aydin (2015), and Holsman et al.~(2016) describe the
+derivation and application of the VBGF towards bioenergetics modeling in
+great detail, so we do not repeat it here. Essentially, in this
+formulation \(d\) represents the realized allometric slope of
+consumption, which integrates both the direct effect of temperature on
+consumption and indirect ecological interactions that scale with
+temperature and influence relative foraging rates (see Essington et al.,
+2010; Holsman and Aydin, 2015). We fit the VBGF to otolith-based length-
+and weight-at-age data (\(n\) = 21,388, 14,362, and 772, for pollock,
+Pacific cod, and arrowtooth flounder, respectively) collected during
+AFSC Bering Sea surveys and analyzed at the AFSC (REF).
+
+For each species, we used the vonBT() model to fit a state-space
+environmental growth model for fish weight and age data using the base
+state-space model (based on Gompertz et al.~20XX):
+
+Eq. 1
+\[ ln(\hat{W}{i}) = W^\infty{i} + \frac{1}{(1-d_{i})}log(1-e^{-K(1-d_{i})(A_i-t_0)})+\varepsilon_i\sim N(0,\sigma^2{obs})\]
+, where
+
+Eq. 2 \[W^\infty_{i} =(\frac{H}{K})^{\frac{1}{(1 - d_{i})}} \]
+
+where \(t_{0,i}\) is the age at which \(W_{i} = 0\), \(W^{\infty}_{i}\)
+is the asymptotic mass which can vary by individual \(i\) cohort year
+effects, \(H\) is the assimilation constant \(K\) is the energy loss
+constant (Essington et al., 2010), and \(\varepsilon_i\) is a normally
+and independently distributed random variable with mean 0 and variance
+\(\sigma_{obs}^2\). Essington et al.~(2010) and Holsman and Aydin,
+(2015) statistically estimated the \(d\), \(K\) and \(H\) parameters for
+various species to estimate consumption rates. In particular, Holsman
+and Aydin (2015) found that the \(d\) parameter varied between species
+and regions in Alaska (USA). We further modified this approach to
+estimate the environment impacts growth on growth annually for each year
+\(y\) through a logistic model that includes a vector of annual
+covariates (\(X_{c,y}\)) effects on \(d\) (which ranges between 0 and
+1). where \(\alpha0_{d,i}\) and \(\alpha_{d,i,y}\) represent the mean
+the \(d\) consumption parameter intercept and \(\\beta_{c}\) is the
+coefficient for the residual effect of an environmental variable on the
+\(d\) consumption parameter, such that:
+
+Eq. 3
+\[d_{i} = 1/(1+e^{-(U_{y}+\beta_{0,y_{y-A_i}}+\sum_c(\beta_{c}*X_{c,y})}) \]
+
+We chose this formulation based on the empirical relationship between
+temperature and consumption, assuming that \(d\) would capture the
+differential effects of temperature on growth, and that waste rates
+scale proportionally with weight but do not vary over time with diet or
+temperature (i.e.~\(K\) is constant but \(d\) can vary with
+temperature). This formulation allows both the slope and asymptotic
+limit of growth to vary with temperature. Similar approaches, with
+slightly different modifications to the VBGF, including temperature and
+prey specific terms for \(d\) and \(K\), respectively, have been used
+elsewhere to evaluate climate impacts on fish growth (e.g., Cheung et
+al., 2015; Hamre, 2003).
+
+We further modeled the \(d\) consumption parameter as a state-space
+model that estimates random effects on \(U_{y}\) as the unobserved state
+vector:
+
+Eq. 4 \[ U_{y} = \mu+ \beta_{1}U_{y-1}+\varepsilon_y \] Process error is
+then modeled as a normal distribution with mean of 0 and standard
+deviation of \(\sigma_{proc}\):
+
+Eq. 5 \[ \varepsilon_{y} \sim N(0,\sigma^2_{proc})\]
+
+Optionally, there can be auto regressive (state-space) terms included as
+\(\beta_1\) (e.g., if growth the previous year impacts growth in
+observation year). Cohort year (\(Y_{y-A_i}\) ) effects can also be
+included as random or fixed effects via \(\beta_{0,y_{y-A_i}}\). If
+these terms are not included the model simplifies to a random (process
+error) annual intercept ( \(\mu\)) plus covariate effects. If covariate
+terms are further not included and the random process error is not
+estimated the model simplifies to the generalized VonB.
+
+Weight at age is then modeled as:
+
+Eq. 6 \[ ln({W}_i) \sim N(ln(\hat{W}_i),\sigma^2_{obs})\] where
+\(\sigma_{obs}\) is the standard deviation of observation error (log
+scale).
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+Comparative model fits using average observed bottom temperature are
+included below.
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Next add in G potential from energetic indices as a covariate.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{Figs/model_plots.jpg}
+\caption{``Fig.1. Comparative model fits to observed weight at age data
+for Walleye pollock in the EBS''}
+\end{figure}
+
+--\textgreater{}
+
+\begin{figure}
+\centering
+\includegraphics{Figs/model_Temp_byage2.jpg}
+\caption{``Fig.2. Temperature effects on weight at age}
+\end{figure}
+
+\end{document}

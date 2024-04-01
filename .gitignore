@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*NotShared
+data/in
+data/out
+.DS*
+._*
