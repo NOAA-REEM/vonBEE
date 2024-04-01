@@ -94,4 +94,15 @@ Comparative model fits using average observed bottom temperature are included be
 <!-- <!-- !["Fig.2. Temperature model fits to observed weight at age data for Walleye pollock in the EBS"](data/out/BS/WALLEYE%20POLLOCK/Figs/model_Temp.jpg){width="400"} --> -->
 
 !["Fig.2. Temperature effects on weight at age](Figs/model_Temp_byage2.jpg)
+```{r makeReadME, echo=FALSE,eval=F, include =F}
+
+# source("R/make.R")
+ # copy and paste this into R window (won't work within markdown)
+
+ rmd2md(rmd_fl = "vonBT_intro",md_fl = "README")
+
+
+```
+
+
 
