@@ -48,9 +48,9 @@ Last updated: `r today`
 
 # Install the package vonBEE
 
-```{r install, echo=FALSE,eval=F, include =F}
+```{r install, echo=TRUE,eval=F, include =T}
   
-  missing <- setdiff(c("devtools","usethis"), installed.packages()[, 1])
+  missing <- setdiff(c("devtools","usethis"),   installed.packages()[, 1])
   if (length(missing) > 0) 
     install.packages(missing)
 

@@ -6,6 +6,14 @@ Last updated: Oct 04, 2024
 
 # Install the package vonBEE
 
+``` r
+  missing <- setdiff(c("devtools","usethis"),   installed.packages()[, 1])
+  if (length(missing) > 0) 
+    install.packages(missing)
+
+  devtools::install_github("NOAA-REEM/vonBEE")
+```
+
 # Introduction
 
 -   [ ] Add intro paragraph about climate effects on growth
