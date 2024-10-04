@@ -26,6 +26,14 @@ output:
     toc_float: true
 ---
 
+
+
+github repo: https://github.com/kholsman/vonBEE
+
+![](Figs/vonBEE.png){width=25%}
+
+
+
 ```{r startup, eval=TRUE, echo=FALSE, results='hide',message=FALSE}
  
  #source(file.path("R","make.R"))      # loads packages, data, setup, etc.
