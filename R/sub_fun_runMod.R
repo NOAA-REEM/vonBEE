@@ -2,8 +2,8 @@
 #'
 #' runMod() will run the vonBT() recruitment model
 #' @import vonBT
-#' @email For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
-#' @weblink 
+#' For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
+#'
 #' @param optimizer default is "nlminb"; can also be set to "optim"
 #' @param methodIN  default is NULL, can be set to "Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN", or "Brent"
 #' @param convergenceTest Test for failed convergence by also running the model using optim
@@ -24,10 +24,10 @@
 #' @param maxitr      10000  Max iterations for fitting the objective function
 #' @param maxeval     10000  Max evaluations for fitting the objective function
 #' @return returns  summary of the model including the mle
-#' 
+#'
 #' @examples
 #' datlist <- readMake_vonBT_data("data/in/vonBT_Inputs.xlsx" )
-#' mm      <- runRecMod(dlistIN   = datlist, version   = 'vonBT',recompile = FALSE,simulate  = TRUE,sim_nitr  = 1000)  
+#' mm      <- runRecMod(dlistIN   = datlist, version   = 'vonBT',recompile = FALSE,simulate  = TRUE,sim_nitr  = 1000)
 #' @export
 runMod<-function(
     dlistIN,
@@ -45,21 +45,21 @@ runMod<-function(
     recompile  = FALSE,
     maxitr     = 10000,
     maxeval    = 10000){
-  
+
   wd0 <- getwd()
   if(!is.null(src_fldr))
     setwd(src_fldr)
-  
-  if(recompile){  
+
+  if(recompile){
     if(file.exists(paste0(version,".o")))
       file.remove(paste0(version,".o"))
     if(file.exists(paste0(version,".so")))
       file.remove(paste0(version,".so"))
-    compile(paste0(version, ".cpp")) 
+    compile(paste0(version, ".cpp"))
   }
-  
-  dyn.load( dynlib(version) ) 
-  
+
+  dyn.load( dynlib(version) )
+
   model  <- MakeADFun(
     data                 =  dlistIN$data,
     parameters           =  dlistIN$parameters,
@@ -70,27 +70,27 @@ runMod<-function(
     hessian              =  hessianIN,
     map                  =  dlistIN$map,
     silent               =  silentIN)
-  
+
   tmpmod  <- list()
   tmpmod$model    <-  model
-  
+
   if(optimizer == "nlminb"){
-   tmpmod$fit      <- nlminb(start = model$par, obj = model$fn, gr = model$gr, 
+   tmpmod$fit      <- nlminb(start = model$par, obj = model$fn, gr = model$gr,
                               control=list(iter.max=maxitr,eval.max=maxeval), method = methodIN)
    if(!is.null(nrep))
      for(i in 1:nrep)
        tmpmod$fit      <-  nlminb(start   = model$env$last.par.best,
                                   obj     = model$fn,
-                                  gr      = model$gr, 
-                                  control = list(iter.max=maxitr,eval.max=maxeval), 
+                                  gr      = model$gr,
+                                  control = list(iter.max=maxitr,eval.max=maxeval),
                                   method  = methodIN)
-    if(tmpmod$fit$objective==Inf) 
+    if(tmpmod$fit$objective==Inf)
        stop("Problem with objective function (Inf)")
-    if(is.na(tmpmod$fit$objective)) 
+    if(is.na(tmpmod$fit$objective))
        stop("Problem with objective function (NaN)")
      if(convergenceTest){
        if(tmpmod$fit$convergence!=0){
-         
+
          conv_table <- data.frame(rbind(
            c(0,"convergence (0)"),
            c(1,"iteration limit maxit had been reached (1)"),
@@ -98,7 +98,7 @@ runMod<-function(
            c(51,"warning from the 'L-BFGS-B' method; see component message for further details (51)"),
            c(52,"error from the 'L-BFGS-B' method; see component message for further details (52)")),stringsAsFactors = FALSE)
          names(conv_table)<-c("code","message")
-         
+
          cat(" problem with nlminb convergence != 0 \n model reports",tmpmod$fit$message, "\n trying optim() to test for convergence")
          model2  <- MakeADFun(
            data                 =  dlistIN$data,
@@ -111,8 +111,8 @@ runMod<-function(
            map                  =  dlistIN$map,
            silent               =  silentIN)
          tmpmod$fit_optim     <- optim(par    = model2$par,
-                                 fn     = model2$fn, 
-                                 gr     = model2$gr, 
+                                 fn     = model2$fn,
+                                 gr     = model2$gr,
                                  method = methodIN,
                                  control = list(maxit=maxitr))
          if(tmpmod$fit_optim$convergence==0)
@@ -127,19 +127,19 @@ runMod<-function(
    }
   if(optimizer == "optim"){
    tmpmod$fit     <- optim(par    = model$par,
-                           fn     = model$fn, 
-                           gr     = model$gr, 
+                           fn     = model$fn,
+                           gr     = model$gr,
                            method = methodIN)
    if(!is.null(nrep))
      for(i in 1:nrep)
        tmpmod$fit      <-  optim(par    = model$env$last.par.best,
                                  fn     = model$fn,
-                                 gr     = model$gr, 
+                                 gr     = model$gr,
                                  method = methodIN)
    }
-  
-  
- 
+
+
+
   tmpmod$objFun   <-  model$fn()
   tmpmod$report   <-  model$report()
   tmpmod$sdreport <-  sdreport(model,getJointPrecision=TRUE)
@@ -152,9 +152,9 @@ runMod<-function(
     tmpmod$Hessian  <-  with(model,optimHess(tmpmod$mle,model$fn,model$gr))
     tmpmod$LnDet    <-  sum(determinant(tmpmod$Hessian, logarithm=TRUE)$modulus[[1]])
   }
-    
+
   lp              <-  model$env$last.par
-  
+
   if (!se.fit) {
     pred          <- unlist(model$report(lp))
     tmpmod$pred   <- data.frame(def= names(pred),pred=pred,pred.se=NA)
@@ -168,12 +168,12 @@ runMod<-function(
     se            <- tmpmod$sdrsum[,"Std. Error"]
     tmpmod$pred   <- data.frame(def= names(pred),pred=pred,pred.se=se)
   }
-  
+
   if(simulate){
     #tmpmod$simdat <- array(sim_nitr)
     sim <- replicate(sim_nitr, {
       simdata <- model$simulate(par = model$par, complete=TRUE)
-      
+
       obj2    <- MakeADFun(data       = simdata,
                            parameters = dlistIN$parameters,
                            DLL        = version,
@@ -186,15 +186,15 @@ runMod<-function(
     })
     tmpmod$sim_df <- data.frame(estimate=as.vector(sim), parameter=names(model$par)[row(sim)])
     tmpmod$sim    <- sim
-    
+
   }
   setwd(wd0 )
-  
-  
-  tmpmod$fitted <- 
+
+
+  tmpmod$fitted <-
     data.frame(age = (tmpmod$report$age),
              W_hat = exp(tmpmod$report$logWhat),
              W_obs = exp(tmpmod$report$logWobs))
-  
+
   return(tmpmod)
 }

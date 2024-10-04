@@ -1,7 +1,7 @@
 # ----------------------------------------
 # setup.R
-# 
+#
 # updated 2023
 # ----------------------------------------
 
-  load(file.path("data","in","LWAdat.rda"))
+  load(file.path("data","LWA.rda"))
