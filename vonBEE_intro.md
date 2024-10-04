@@ -1,15 +1,14 @@
-github repo: <https://github.com/kholsman/vonBEE>
-
 <img src="Figs/vonBEE.png" style="width:25.0%" />
 
-Last updated: Oct 04, 2024
+Last updated: Oct 04, 2024  
+github repo: <https://github.com/kholsman/vonBEE>  
+<https://noaa-reem.github.io/vonBEE/>
 
 # Install the package vonBEE
 
 ``` r
   missing <- setdiff(c("devtools","usethis"),   installed.packages()[, 1])
-  if (length(missing) > 0) 
-    install.packages(missing)
+  if (length(missing) > 0)  install.packages(missing)
 
   devtools::install_github("NOAA-REEM/vonBEE")
 ```

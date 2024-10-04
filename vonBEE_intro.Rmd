@@ -2,20 +2,6 @@
 title: "VonBEE: State-space vonB growth model with environmental covariates"
 author: K. K. Holsman, J. Ianelli, et al.
 output:
-  html_document:
-    df_print: kable
-    fig_caption: yes
-    theme: flatly
-    toc: true
-    toc_float: true
-  word_document:
-    fig_caption: yes
-    fig_width: 4
-    keep_md: yes
-  header-includes:
-  - \usepackage{inputenc}
-  - \usepackage{unicode-math}
-  - \pagenumbering{gobble}
   pdf_document:
     fig_caption: yes
     fig_height: 4
@@ -24,13 +10,24 @@ output:
     keep_tex: yes
     latex_engine: xelatex
     toc: TRUE
+  word_document:
+    fig_caption: yes
+    fig_width: 4
+    keep_md: yes
+  header-includes:
+  - \usepackage{inputenc}
+  - \usepackage{unicode-math}
+  - \pagenumbering{gobble}
+  html_document:
+    df_print: kable
+    fig_caption: yes
+    theme: flatly
+    toc: true
+    toc_float: true
 ---
 
-
-
-github repo: https://github.com/kholsman/vonBEE
-
 ![](Figs/vonBEE.png){width=25%}
+
 
 
 
@@ -44,18 +41,18 @@ github repo: https://github.com/kholsman/vonBEE
  
 ```
 
-Last updated: `r today`
+Last updated: `r today`  
+github repo: https://github.com/kholsman/vonBEE  
+https://noaa-reem.github.io/vonBEE/  
 
 # Install the package vonBEE
 
 ```{r install, echo=TRUE,eval=F, include =T}
   
   missing <- setdiff(c("devtools","usethis"),   installed.packages()[, 1])
-  if (length(missing) > 0) 
-    install.packages(missing)
+  if (length(missing) > 0)  install.packages(missing)
 
   devtools::install_github("NOAA-REEM/vonBEE")
-
 
 ```
 
