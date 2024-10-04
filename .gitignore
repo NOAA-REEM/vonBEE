@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 *NotShared
-data/in
 data/out
+data\out
 .DS*
 ._*

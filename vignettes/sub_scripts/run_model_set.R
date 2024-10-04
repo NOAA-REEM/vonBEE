@@ -17,7 +17,7 @@
 
 # C. Select top model for use in CEATTLE
 
-  #source("R/make.R")       # loads packages, data, setup, etc.
+  # source(file.path("R","make.R"))       # loads packages, data, setup, etc.
 
   print(cat("now running models and plots for: ",spIN,"in Region", regIN, "\n"))
  
@@ -72,9 +72,9 @@
                 vonb_cov   = matrix(t(covs),ncov,nobs),
                 sdvonb_cov = matrix(t(covs_se),ncov,nobs))
   
-  save(dat,file = file.path(out_fn,"dat.Rdata"))
-  save(covs,file = file.path(out_fn,"covs.Rdata"))
-  save(covs_se,file = file.path(out_fn,"covs_se.Rdata"))
+  save(dat,file = file.path(prefn,out_fn,"dat.Rdata"))
+  save(covs,file = file.path(prefn,out_fn,"covs.Rdata"))
+  save(covs_se,file = file.path(prefn,out_fn,"covs_se.Rdata"))
   
   # define starting par
   par <-list(
@@ -489,7 +489,7 @@
   plots[["p1_models"]]<-p1_models
   
   sclr<-1
-  jpeg(filename = file.path(plot_fn,"model_plots.jpg"), res = 350, width = sclr*10, height = sclr*6,units = "in")
+  jpeg(filename = file.path(prefn,plot_fn,"model_plots.jpg"), res = 350, width = sclr*10, height = sclr*6,units = "in")
   print(p1_models)
   dev.off()
   
@@ -672,23 +672,23 @@
   T_models3
   
   sclr<-1
-  jpeg(filename = file.path(plot_fn,"model_Temp.jpg"), res = 350, width = sclr*6, height = sclr*5,units = "in")
+  jpeg(filename = file.path(prefn,plot_fn,"model_Temp.jpg"), res = 350, width = sclr*6, height = sclr*5,units = "in")
   print(T_models)
   dev.off()
   
   sclr<-1
-  jpeg(filename = file.path(plot_fn,"model_Temp_byage.jpg"), res = 350, width = sclr*9, height = sclr*10,units = "in")
+  jpeg(filename = file.path(prefn,plot_fn,"model_Temp_byage.jpg"), res = 350, width = sclr*9, height = sclr*10,units = "in")
   print(T_models2)
   dev.off()
   
   sclr<-1.5
-  jpeg(filename = file.path(plot_fn,"model_Temp_byage2.jpg"), res = 350, width = sclr*6, height = sclr*4,units = "in")
+  jpeg(filename = file.path(prefn,plot_fn,"model_Temp_byage2.jpg"), res = 350, width = sclr*6, height = sclr*4,units = "in")
   print(T_models3)
   dev.off()
   
   models <- list(m0=m0,m1=m1,m2=m2,m3=m3,m3_rnd=m3_rnd,m4=m4,m5=m5,species=spIN)
-  save(models,file=file.path(out_fn,"models.Rdata"))
-  save(plots,file=file.path(out_fn,"plots.Rdata"))
+  save(models,file=file.path(prefn,out_fn,"models.Rdata"))
+  save(plots,file=file.path(prefn,out_fn,"plots.Rdata"))
   rmlist <- c("models","plots","T_models3","T_models2","T_models","datIN","pdat_out2",
               "pdat_out3","pdat_out","pdat","m0","m1","m2","m3","m3_rnd","m4","m5")
   print("run_Model_set complete\n ----------------------------")

@@ -15,7 +15,7 @@
 
     # set up directory paths:
     #-------------------------------------------
-    ROMS_data_path <- "../ACLIM2/Data/out"
+    ROMS_data_path <- file.path("..","ACLIM2","Data","out")
    
     # Index stuff:
     #-------------------------------------------
@@ -25,10 +25,7 @@
     # Imm_summer_strata <- c(50) #+ offshore (need whole basin is avail )
     # Imm_fall_strata   <- c(61, 62)
     # Imm_winter_strata <- c(61, 62)
-     # 
-     # salmon_winter   <-  c("Jan", "Feb", "Mar")
-     # salmon_summer   <-  c("Jul", "Aug", "Sept")
-     # salmon_fall     <-  c("Oct", "Nov", "Dec")
+ 
 
      varlist <- c("temp_surface5m", 
                       "temp_bottom5m", 
@@ -41,18 +38,6 @@
                       "NCaO_surface5m",
                       "NCaS_integrated",
                       "NCaS_surface5m")
-      
-    # salmon_vars <- c("temp_surface5m", 
-    #                  "temp_bottom5m", 
-    #                  "temp_integrated",
-    #                  "EupO_surface5m",
-    #                  "EupO_integrated",
-    #                  "EupS_integrated",
-    #                  "EupS_surface5m",
-    #                  "NCaO_integrated",
-    #                  "NCaO_surface5m",
-    #                  "NCaS_integrated",
-    #                  "NCaS_surface5m")
     # Plotting stuff:
     #-------------------------------------------
     col_ramp <- colorRampPalette(c(brewer.pal(11,"Spectral")[c(3,9)],brewer.pal(11,"RdBu")[11]))

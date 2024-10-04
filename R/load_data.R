@@ -4,4 +4,4 @@
 # updated 2023
 # ----------------------------------------
 
-  load("data/in/LWA_ALL.Rdata")
+  load(file.path("data","in","LWAdat.rda"))

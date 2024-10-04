@@ -7,19 +7,22 @@
 #' 
 
 
-  source("R/make.R")
+ source(file.path("R","make.R"))
 
   # LOAD data
   # ------------------------------------
-  load("data/in/NotShared/2023_09_26/LWA_ALL.Rdata")
-    dat.all <- LWA_ALL%>%filter(!is.na(AGE), !is.na(WEIGHT),WEIGHT>0, AGE>0,!is.na(GEAR_TEMPERATURE),!is.na(SPECIES_NAME))%>%
-      mutate(YEAR  = as.numeric(substr(START_TIME,1,4)),
-             MONTH = as.numeric(substr(START_TIME,6,7)),
-             DAY   = as.numeric(substr(START_TIME,9,10)), START_DATE = as.Date(substr(START_TIME,1,10)))%>%
-      filter(CRUISE_TYPE =="Race_Groundfish")%>%
-      select(REGION,YEAR,CRUISE_TYPE,HAULJOIN,STATIONID, STRATUM,age=AGE,weight=WEIGHT,Temp = GEAR_TEMPERATURE, SPECIES_CODE,CN = COMMON_NAME, SN = SPECIES_NAME,CRUISE_TYPE)%>%
-      mutate(Sp = factor(CN))
-  
+  load(file.path("data","in","LWAdat.rda"))
+  #load(file.path("data","in","NotShared","2023_09_26","LWA_ALL.Rdata"))
+    # LWAdat <- LWA_ALL%>%filter(!is.na(AGE), !is.na(WEIGHT),WEIGHT>0, AGE>0,!is.na(GEAR_TEMPERATURE),!is.na(SPECIES_NAME))%>%
+    #   mutate(YEAR  = as.numeric(substr(START_TIME,1,4)),
+    #          MONTH = as.numeric(substr(START_TIME,6,7)),
+    #          DAY   = as.numeric(substr(START_TIME,9,10)), START_DATE = as.Date(substr(START_TIME,1,10)))%>%
+    #   filter(CRUISE_TYPE =="Race_Groundfish")%>%
+    #   select(REGION,YEAR,CRUISE_TYPE,HAULJOIN,STATIONID, STRATUM,age=AGE,weight=WEIGHT,Temp = GEAR_TEMPERATURE, 
+    #          SPECIES_CODE,CN = COMMON_NAME, SN = SPECIES_NAME,CRUISE_TYPE)%>%
+    #   mutate(Sp = factor(CN))
+    # save(LWAdat, file= file.path("data","in","LWAdat.rda"))
+    # 
     species <- (unique(dat.all$Sp))
     species <- c("walleye pollock","Pacific cod", "arrowtooth flounder","yellowfin sole","sablefish","Pacific ocean perch")
     regions <- unique(dat.all$REGION)
@@ -35,18 +38,21 @@
     TMB::compile('VonBTv1.cpp') 
     #recompile("VonBTv1")
     dyn.load(dynlib('VonBTv1')) 
+   
     
     # test the TMB model
-    source("../../../../R/sub_scripts/test_TMB_model.R")
+    prefn <- file.path("..","..","..","..")
+    
+    source(file.path(prefn,"vignettes","sub_scripts","test_TMB_model.R"))
     
     regIN <-regions[1]; spIN <- species[1]
     for(regIN in regions){
-      out_fn <- file.path("../../../../data/out",regIN)
+      out_fn <- file.path("data","out",regIN)
       if(!dir.exists(out_fn))
         dir.create(out_fn)
       
       for(spIN in species[1:4]){  # skip sablefish and POP for now
-        out_fn <- file.path("../../../../data/out",regIN,spIN)
+        out_fn <- file.path("data","out",regIN,spIN)
         if(!dir.exists(out_fn))
           dir.create(out_fn)
         
@@ -55,7 +61,8 @@
           dir.create(plot_fn)
         
         silent_tmp <- TRUE # change to FALSE to see print out
-        source("../../../../R/sub_scripts/run_model_set.R")
+        
+        source(file.path(prefn,"vignettes","sub_scripts","run_model_set.R"))
         
         # run aic on models
         nms    <- (names(models[[1]]))

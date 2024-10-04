@@ -7,7 +7,7 @@
 #'
 #'
 
-out_fn <- file.path("../../../../data/out","test_EBS")
+out_fn <- file.path(prefn,"data","out","test_EBS")
 if(!dir.exists(out_fn)) dir.create(out_fn)
 
 # select subset for EBS pollock
