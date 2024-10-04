@@ -77,6 +77,16 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -250,6 +260,8 @@ included below.
   Next add in G potential from energetic indices as a covariate.
 \end{itemize}
 
+\subsection{EBS pollock}\label{ebs-pollock}
+
 \begin{figure}
 \centering
 \includegraphics{Figs/model_plots.jpg}
@@ -257,12 +269,140 @@ included below.
 for Walleye pollock in the EBS''}
 \end{figure}
 
---\textgreater{}
-
 \begin{figure}
 \centering
 \includegraphics{Figs/model_Temp_byage2.jpg}
 \caption{``Fig.2. Temperature effects on weight at age}
 \end{figure}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0323}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0323}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0461}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0415}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0138}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0276}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.1152}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.1982}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0553}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0415}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0415}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0415}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0461}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0276}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0461}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0323}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0507}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0737}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 36\tabcolsep) * \real{0.0369}}@{}}
+\caption{AIcc results for EBS pollock}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+X
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+r2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+nll
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+k
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+converg\_nlminb
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+convergence\_optim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+convergence
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_mult
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aicc
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+delta\_aic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sum\_aic\_L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_wt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sum\_aic\_wt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+evidence\_wt\_top
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+top\_set
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+X
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+r2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+nll
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+k
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+converg\_nlminb
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+convergence\_optim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+convergence
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_mult
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aicc
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+delta\_aic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sum\_aic\_L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+aic\_wt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sum\_aic\_wt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+evidence\_wt\_top
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+top\_set
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+m5 & m5 & 0.8007334 & 14791.21 & 11 & 35617 & false convergence (8) &
+convergence (0) & TRUE & 29604.42 & 1 & 29604.43 & 0.000 & 1 & 1 & 1 & 1
+& 1 & TRUE \\
+m2 & m2 & 0.7746708 & 16070.69 & 9 & 35617 & false convergence (8) &
+convergence (0) & TRUE & 32159.38 & 1 & 32159.39 & 2554.960 & 0 & 1 & 0
+& 1 & Inf & FALSE \\
+m0 & m0 & 0.7692211 & 16206.30 & 5 & 35617 & false convergence (8) &
+convergence (0) & TRUE & 32422.59 & 1 & 32422.59 & 2818.165 & 0 & 1 & 0
+& 1 & Inf & FALSE \\
+m1 & m1 & 0.7746494 & 16070.79 & 7 & 35617 & relative convergence (4) &
+NA & FALSE & 32155.58 & NA & NA & NA & NA & 1 & NA & NA & NA & NA \\
+m3 & m3 & 0.7788672 & 15699.80 & 58 & 35617 & false convergence (8) &
+iteration limit maxit had been reached (1) & FALSE & 31515.59 & NA & NA
+& NA & NA & 1 & NA & NA & NA & NA \\
+m3\_rnd & m3\_rnd & 0.7793100 & 15891.81 & 9 & 35617 & relative
+convergence (4) & NA & FALSE & 31801.63 & NA & NA & NA & NA & 1 & NA &
+NA & NA & NA \\
+m4 & m4 & 0.7911073 & 15400.81 & 11 & 35617 & relative convergence (4) &
+NA & FALSE & 30823.63 & NA & NA & NA & NA & 1 & NA & NA & NA & NA \\
+\end{longtable}
+
+\section{other}\label{other}
 
 \end{document}

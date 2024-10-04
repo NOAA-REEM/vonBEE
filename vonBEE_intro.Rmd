@@ -2,14 +2,12 @@
 title: "VonBEE: State-space vonB growth model with environmental covariates"
 author: K. K. Holsman, J. Ianelli, et al.
 output:
-  pdf_document:
+  html_document:
+    df_print: kable
     fig_caption: yes
-    fig_height: 4
-    fig_width: 5
-    highlight: tango
-    keep_tex: yes
-    latex_engine: xelatex
-    toc: TRUE
+    theme: flatly
+    toc: true
+    toc_float: true
   word_document:
     fig_caption: yes
     fig_width: 4
@@ -18,12 +16,14 @@ output:
   - \usepackage{inputenc}
   - \usepackage{unicode-math}
   - \pagenumbering{gobble}
-  html_document:
-    df_print: kable
+  pdf_document:
     fig_caption: yes
-    theme: flatly
-    toc: true
-    toc_float: true
+    fig_height: 4
+    fig_width: 5
+    highlight: tango
+    keep_tex: yes
+    latex_engine: xelatex
+    toc: TRUE
 ---
 
 
@@ -103,17 +103,385 @@ Eq. 6 $$ ln({W}_i) \sim N(ln(\hat{W}_i),\sigma^2_{obs})$$ where $\sigma_{obs}$ i
 
 <!-- Eq. 3 $~~~~~~d_{i,y}=e^{(\alpha_{d,i,y}+\alpha0_{d,i}+\beta_{d,i}T_y) }$ -->
 
-# Results
+# Results 
 
 Comparative model fits using average observed bottom temperature are included below.
 
 -   [ ] Next add in G potential from energetic indices as a covariate.
 
-!["Fig.1. Comparative model fits to observed weight at age data for Walleye pollock in the EBS"](Figs/model_plots.jpg)
+## Eastern Bering Sea {.tabset}
 
-<!-- <!-- !["Fig.2. Temperature model fits to observed weight at age data for Walleye pollock in the EBS"](data/out/BS/WALLEYE%20POLLOCK/Figs/model_Temp.jpg){width="400"} --> -->
+```{r reg1, echo = FALSE, results = 'asis',message=F}
+  reg <-"BS"
+  library(knitr)
+  library(dplyr)
+```
 
-!["Fig.2. Temperature effects on weight at age](Figs/model_Temp_byage2.jpg)
+
+### EBS pollock
+
+<!-- ![Comparative model fits to observed weight at age data](Figs/model_plots.jpg) -->
+
+<!-- ![Temperature effects on weight at age](Figs/model_Temp_byage2.jpg) -->
+
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "walleye pollock"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+### EBS Pacific cod
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "Pacific cod"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+
+
+
+### EBS arrowtooth flounder
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "arrowtooth flounder"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+
+
+
+
+
+### EBS sablefish
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F} -->
+<!--  # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"           -->
+<!--   # [4] "walleye pollock"     "yellowfin sole"  -->
+<!--   sp <- "sablefish" -->
+<!--   fn <- file.path("data","out",reg,sp) -->
+<!--   library(knitr) -->
+<!--   library(dplyr) -->
+<!-- ``` -->
+
+<!-- ```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'} -->
+
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg")) -->
+
+<!-- ``` -->
+
+<!-- ```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'} -->
+
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg")) -->
+
+<!-- ``` -->
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F}   -->
+<!--   aic_tab <- read.csv(file.path(fn, "aic_table.csv")) -->
+<!--   aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2)) -->
+<!--   kable(aic_tab, caption = paste("AIcc results for ",reg,sp)) -->
+<!--   rm(aic_tab) -->
+<!--   rm(fn) -->
+
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+### EBS yellowfin sole
+
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "yellowfin sole"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+## Gulf of Alaska {.tabset}
+
+```{r reg2, echo = FALSE, results = 'asis',message=F}
+  reg <-"GOA"
+  library(knitr)
+  library(dplyr)
+```
+
+
+### EBS pollock
+
+<!-- ![Comparative model fits to observed weight at age data](Figs/model_plots.jpg) -->
+
+<!-- ![Temperature effects on weight at age](Figs/model_Temp_byage2.jpg) -->
+
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "walleye pollock"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+### EBS Pacific cod
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "Pacific cod"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+
+
+
+### EBS arrowtooth flounder
+```{r echo = FALSE, results = 'asis',message=F}
+ # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"          
+  # [4] "walleye pollock"     "yellowfin sole" 
+  sp <- "arrowtooth flounder"
+  fn <- file.path("data","out",reg,sp)
+  library(knitr)
+  library(dplyr)
+```
+
+```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg"))
+
+```
+
+```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'}
+
+knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg"))
+
+```
+
+```{r echo = FALSE, results = 'asis',message=F}  
+  aic_tab <- read.csv(file.path(fn, "aic_table.csv"))
+  aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2))
+  kable(aic_tab, caption = paste("AIcc results for ",reg,sp))
+  rm(aic_tab)
+  rm(fn)
+
+
+```
+
+
+
+
+
+
+### EBS sablefish
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F} -->
+<!--  # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"           -->
+<!--   # [4] "walleye pollock"     "yellowfin sole"  -->
+<!--   sp <- "sablefish" -->
+<!--   fn <- file.path("data","out",reg,sp) -->
+<!--   library(knitr) -->
+<!--   library(dplyr) -->
+<!-- ``` -->
+
+<!-- ```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'} -->
+
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg")) -->
+
+<!-- ``` -->
+
+<!-- ```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'} -->
+
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg")) -->
+
+<!-- ``` -->
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F}   -->
+<!--   aic_tab <- read.csv(file.path(fn, "aic_table.csv")) -->
+<!--   aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2)) -->
+<!--   kable(aic_tab, caption = paste("AIcc results for ",reg,sp)) -->
+<!--   rm(aic_tab) -->
+<!--   rm(fn) -->
+
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+### EBS yellowfin sole
+
+
+
+
+
+
+
+
+
+
+
+# other
+
 ```{r makeReadME, echo=FALSE,eval=F, include =F}
 
 # source(file.path("R","make.R")) 
