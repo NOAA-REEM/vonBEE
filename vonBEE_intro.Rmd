@@ -2,14 +2,12 @@
 title: "VonBEE: State-space vonB growth model with environmental covariates"
 author: K. K. Holsman, J. Ianelli, et al.
 output:
-  pdf_document:
+  html_document:
+    df_print: kable
     fig_caption: yes
-    fig_height: 4
-    fig_width: 5
-    highlight: tango
-    keep_tex: yes
-    latex_engine: xelatex
-    toc: TRUE
+    theme: flatly
+    toc: true
+    toc_float: true
   word_document:
     fig_caption: yes
     fig_width: 4
@@ -18,12 +16,14 @@ output:
   - \usepackage{inputenc}
   - \usepackage{unicode-math}
   - \pagenumbering{gobble}
-  html_document:
-    df_print: kable
+  pdf_document:
     fig_caption: yes
-    theme: flatly
-    toc: true
-    toc_float: true
+    fig_height: 4
+    fig_width: 5
+    highlight: tango
+    keep_tex: yes
+    latex_engine: xelatex
+    toc: TRUE
 ---
 
 ![](Figs/vonBEE.png){width=25%}
