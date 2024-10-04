@@ -1,4 +1,4 @@
-Last updated: Apr 01, 2024
+Last updated: Oct 04, 2024
 
 # Introduction
 
@@ -56,9 +56,9 @@ environment impacts growth on growth annually for each year *y* through
 a logistic model that includes a vector of annual covariates
 (*X*<sub>*c*, *y*</sub>) effects on *d* (which ranges between 0 and 1).
 where *α*0<sub>*d*, *i*</sub> and *α*<sub>*d*, *i*, *y*</sub> represent
-the mean the *d* consumption parameter intercept and $\\beta\_{c}$ is
-the coefficient for the residual effect of an environmental variable on
-the *d* consumption parameter, such that:
+the mean the *d* consumption parameter intercept and *β*<sub>*c*</sub>
+is the coefficient for the residual effect of an environmental variable
+on the *d* consumption parameter, such that:
 
 Eq. 3
 *d*<sub>*i*</sub> = 1/(1+*e*<sup>−(*U*<sub>*y*</sub> + *β*<sub>0, *y*<sub>*y* − *A*<sub>*i*</sub></sub></sub> + ∑<sub>*c*</sub>(*β*<sub>*c*</sub>\**X*<sub>*c*, *y*</sub>)</sup>)

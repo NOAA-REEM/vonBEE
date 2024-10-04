@@ -5,16 +5,19 @@
 \documentclass[
 ]{article}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -54,16 +57,17 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
-  pdftitle={State-space vonB growth model with environmental covariates},
+  pdftitle={VonBEE: State-space vonB growth model with environmental covariates},
   pdfauthor={K. K. Holsman, J. Ianelli, et al.},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{State-space vonB growth model with environmental covariates}
+\title{VonBEE: State-space vonB growth model with environmental
+covariates}
 \author{K. K. Holsman, J. Ianelli, et al.}
 \date{}
 
@@ -74,10 +78,9 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-Last updated: Nov 13, 2023
+Last updated: Oct 04, 2024
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
 \begin{itemize}
 \tightlist
@@ -91,12 +94,10 @@ weight and temperature (see Hanson et al., 1997 for an overview).
 
 (based on \url{https://seananderson.ca/2014/10/17/tmb/})
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\section{Methods}\label{methods}
 
-\hypertarget{temperature-specific-weight-at-age}{%
 \subsection{Temperature specific weight at
-age}\label{temperature-specific-weight-at-age}}
+age}\label{temperature-specific-weight-at-age}
 
 We modified the generalized formulation of the von Bertalanffy growth
 function (VBGF; von Bertalanffy 1938; Pauly 1981; Temming 1994) to
@@ -182,8 +183,7 @@ Eq. 6 \[ ln({W}_i) \sim N(ln(\hat{W}_i),\sigma^2_{obs})\] where
 \(\sigma_{obs}\) is the standard deviation of observation error (log
 scale).
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\section{Results}\label{results}
 
 Comparative model fits using average observed bottom temperature are
 included below.

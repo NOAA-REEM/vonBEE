@@ -1,48 +1,14 @@
-Package: vonBT
+Package: vonBEE
 Type: Package
-Title: R package for fitting environmentally linked vonB growth curves (weight at age or length at age)
+Title:  R package for fitting environmentally linked vonB growth curves (weight at age or length at age)
 Version: 0.1.0
-Authors@R: 
-    person(given = "Kirstin",
+Author: person(given = "Kirstin",
            family = "Holsman",
            role = c("aut", "cre"),
            email = "kirstin.holsman@noaa.gov")
 Maintainer: The package maintainer <kirstin.holsman@noaa.gov> 
-Description: 'VonBT' fits environmental covariates to the vonB growth function. We modified the generalized formulation of the von Bertalanffy growth function (VBGF; von Bertalanffy 1938; Pauly 1981; Temming 1994) to predict temperature-dependent growth by allowing the allometric scaling parameter *d* to increase with temperature. Essington et al.(2010) and Holsman and Aydin (2015), and Holsman et al.(2016) describe the derivation and application of the VBGF towards bioenergetics modeling in great detail, so we do not repeat it here. Essentially, in this formulation *d* represents the realized allometric slope of consumption, which integrates both the direct effect of temperature on consumption and indirect ecological interactions that scale with temperature and influence relative foraging rates (see Essington et al., 2010; Holsman and Aydin, 2015). We fit the VBGF to otolith-based length- and weight-at-age data (*n* = 21,388, 14,362, and 772, for pollock, Pacific cod, and arrowtooth flounder, respectively) collected during AFSC Bering Sea surveys and analyzed at the AFSC (REF). For each species, we used the vonBT() model to fit a state-space environmental growth model for fish weight and age data using the base state-space model (based on Gompertz et al 20XX)
+Description: 'VonBT' fits environmental covariates to the vonB growth function. 
+    We modified the generalized formulation of the von Bertalanffy growth function (VBGF; von Bertalanffy 1938; Pauly 1981; Temming 1994) to predict temperature-dependent growth by allowing the allometric scaling parameter *d* to increase with temperature. Essington et al.(2010) and Holsman and Aydin (2015), and Holsman et al.(2016) describe the derivation and application of the VBGF towards bioenergetics modeling in great detail, so we do not repeat it here. Essentially, in this formulation *d* represents the realized allometric slope of consumption, which integrates both the direct effect of temperature on consumption and indirect ecological interactions that scale with temperature and influence relative foraging rates (see Essington et al., 2010; Holsman and Aydin, 2015). We fit the VBGF to otolith-based length- and weight-at-age data (*n* = 21,388, 14,362, and 772, for pollock, Pacific cod, and arrowtooth flounder, respectively) collected during AFSC Bering Sea surveys and analyzed at the AFSC (REF). For each species, we used the vonBT() model to fit a state-space environmental growth model for fish weight and age data using the base state-space model (based on Gompertz et al 20XX)
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
-Imports: 
-    Matrix,
-    TMB,
-    writexl,
-    viridis,
-    reshape,
-    tidyr,
-    dplyr, 
-    ggplot2,
-    lattice,
-    purrr,
-    readxl,
-    knitr,
-    kableExtra,
-    cowplot,
-    RColorBrewer,
-    ggplot2, 
-    wesanderson,
-    scales,
-    ggforce,
-    grid,
-    processx,
-    plotly,
-    extrafont
-LinkingTo: 
-    TMB
-Remotes: kaskr/TMB_contrib_R/TMBhelper
-Suggests: 
-    rmarkdown,
-    knitr
-VignetteBuilder: rmarkdown
-Depends: 
-    R (>= 2.10)

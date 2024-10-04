@@ -1,5 +1,5 @@
 ---
-title: "State-space vonB growth model with environmental covariates"
+title: "VonBEE: State-space vonB growth model with environmental covariates"
 author: K. K. Holsman, J. Ianelli, et al.
 output:
   pdf_document:
@@ -58,7 +58,7 @@ Eq. 1 $$ ln(\hat{W}{i}) = W^\infty{i} + \frac{1}{(1-d_{i})}log(1-e^{-K(1-d_{i})(
 
 Eq. 2 $$W^\infty_{i} =(\frac{H}{K})^{\frac{1}{(1 - d_{i})}} $$
 
-where $t_{0,i}$ is the age at which $W_{i} = 0$, $W^{\infty}_{i}$ is the asymptotic mass which can vary by individual $i$ cohort year effects, $H$ is the assimilation constant $K$ is the energy loss constant (Essington et al., 2010), and $\varepsilon_i$ is a normally and independently distributed random variable with mean 0 and variance $\sigma_{obs}^2$. Essington et al. (2010) and Holsman and Aydin, (2015) statistically estimated the $d$, $K$ and $H$ parameters for various species to estimate consumption rates. In particular, Holsman and Aydin (2015) found that the $d$ parameter varied between species and regions in Alaska (USA). We further modified this approach to estimate the environment impacts growth on growth annually for each year $y$ through a logistic model that includes a vector of annual covariates ($X_{c,y}$) effects on $d$ (which ranges between 0 and 1). where $\alpha0_{d,i}$ and $\alpha_{d,i,y}$ represent the mean the $d$ consumption parameter intercept and $\\beta_{c}$ is the coefficient for the residual effect of an environmental variable on the $d$ consumption parameter, such that:
+where $t_{0,i}$ is the age at which $W_{i} = 0$, $W^{\infty}_{i}$ is the asymptotic mass which can vary by individual $i$ cohort year effects, $H$ is the assimilation constant $K$ is the energy loss constant (Essington et al., 2010), and $\varepsilon_i$ is a normally and independently distributed random variable with mean 0 and variance $\sigma_{obs}^2$. Essington et al. (2010) and Holsman and Aydin, (2015) statistically estimated the $d$, $K$ and $H$ parameters for various species to estimate consumption rates. In particular, Holsman and Aydin (2015) found that the $d$ parameter varied between species and regions in Alaska (USA). We further modified this approach to estimate the environment impacts growth on growth annually for each year $y$ through a logistic model that includes a vector of annual covariates ($X_{c,y}$) effects on $d$ (which ranges between 0 and 1). where $\alpha0_{d,i}$ and $\alpha_{d,i,y}$ represent the mean the $d$ consumption parameter intercept and $\beta_{c}$ is the coefficient for the residual effect of an environmental variable on the $d$ consumption parameter, such that:
 
 Eq. 3 $$d_{i} = 1/(1+e^{-(U_{y}+\beta_{0,y_{y-A_i}}+\sum_c(\beta_{c}*X_{c,y})}) $$
 
@@ -98,7 +98,7 @@ Comparative model fits using average observed bottom temperature are included be
 # source(file.path("R","make.R")) 
  # copy and paste this into R window (won't work within markdown)
 
- rmd2md(rmd_fl = "vonBT_intro",md_fl = "README")
+ rmd2md(rmd_fl = "vonBEE_intro",md_fl = "README")
 
 
 ```
