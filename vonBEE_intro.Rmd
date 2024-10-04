@@ -119,7 +119,12 @@ Comparative model fits using average observed bottom temperature are included be
 # source(file.path("R","make.R")) 
  # copy and paste this into R window (won't work within markdown)
 
- rmd2md(rmd_fl = "vonBEE_intro",md_fl = "README")
+ vonBEE::rmd2md(rmd_fl = "vonBEE_intro",md_fl = "README")
+    file.copy(from = file.path("vonBEE_intro.html"),
+            to = file.path("index.html"),overwrite = T)
+      file.copy(from = file.path("index.html"),
+            to = file.path("(root)"),overwrite = T)
+
 
 
 ```
