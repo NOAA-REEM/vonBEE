@@ -128,20 +128,229 @@ included below.
 
 -   [ ] Next add in G potential from energetic indices as a covariate.
 
-<figure>
-<img src="Figs/model_plots.jpg"
-alt="“Fig.1. Comparative model fits to observed weight at age data for Walleye pollock in the EBS”" />
-<figcaption aria-hidden="true">“Fig.1. Comparative model fits to
-observed weight at age data for Walleye pollock in the EBS”</figcaption>
-</figure>
+## Eastern Bering Sea
 
-<!-- <!-- !["Fig.2. Temperature model fits to observed weight at age data for Walleye pollock in the EBS"](data/out/BS/WALLEYE%20POLLOCK/Figs/model_Temp.jpg){width="400"} -->
+### EBS pollock
 
-–\>
+<!-- ![Comparative model fits to observed weight at age data](Figs/model_plots.jpg) -->
+<!-- ![Temperature effects on weight at age](Figs/model_Temp_byage2.jpg) -->
 
-<figure>
-<img src="Figs/model_Temp_byage2.jpg"
-alt="“Fig.2. Temperature effects on weight at age" />
-<figcaption aria-hidden="true">“Fig.2. Temperature effects on weight at
-age</figcaption>
-</figure>
+<img src="data/out/BS/walleye pollock/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/BS/walleye pollock/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model  | top_set |   r2 |      nll |   k |     n | delta_aic | aic_wt | sum_aic_wt |
+|:-------|:--------|-----:|---------:|----:|------:|----------:|-------:|-----------:|
+| m5     | TRUE    | 0.80 | 14791.21 |  11 | 35617 |      0.00 |      1 |          1 |
+| m2     | FALSE   | 0.77 | 16070.69 |   9 | 35617 |   2554.96 |      0 |          1 |
+| m0     | FALSE   | 0.77 | 16206.30 |   5 | 35617 |   2818.16 |      0 |          1 |
+| m1     | NA      | 0.77 | 16070.79 |   7 | 35617 |        NA |     NA |         NA |
+| m3     | NA      | 0.78 | 15699.80 |  58 | 35617 |        NA |     NA |         NA |
+| m3_rnd | NA      | 0.78 | 15891.81 |   9 | 35617 |        NA |     NA |         NA |
+| m4     | NA      | 0.79 | 15400.81 |  11 | 35617 |        NA |     NA |         NA |
+
+AIcc results for BS walleye pollock
+
+### EBS Pacific cod
+
+<img src="data/out/BS/Pacific cod/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/BS/Pacific cod/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model  | top_set |   r2 |      nll |   k |     n | delta_aic | aic_wt | sum_aic_wt |
+|:-------|:--------|-----:|---------:|----:|------:|----------:|-------:|-----------:|
+| m4     | TRUE    | 0.76 | 17174.24 |  11 | 28034 |      0.00 |      1 |          1 |
+| m2     | FALSE   | 0.78 | 18463.98 |   9 | 28034 |   2575.48 |      0 |          1 |
+| m1     | FALSE   | 0.77 | 18771.32 |   7 | 28034 |   3186.15 |      0 |          1 |
+| m0     | FALSE   | 0.78 | 19240.30 |   5 | 28034 |   4120.12 |      0 |          1 |
+| m3     | NA      | 0.78 | 16959.47 |  51 | 28034 |        NA |     NA |         NA |
+| m3_rnd | NA      | 0.78 | 17010.33 |   9 | 28034 |        NA |     NA |         NA |
+| m5     | NA      | 0.77 | 16491.97 |  11 | 28034 |        NA |     NA |         NA |
+
+AIcc results for BS Pacific cod
+
+### EBS arrowtooth flounder
+
+<img src="data/out/BS/arrowtooth flounder/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/BS/arrowtooth flounder/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model  | top_set |   r2 |      nll |   k |    n | delta_aic | aic_wt | sum_aic_wt |
+|:-------|:--------|-----:|---------:|----:|-----:|----------:|-------:|-----------:|
+| m2     | TRUE    | 0.77 | 3153.059 |   9 | 6467 |      0.00 |      1 |          1 |
+| m1     | FALSE   | 0.76 | 3218.419 |   7 | 6467 |    126.71 |      0 |          1 |
+| m0     | FALSE   | 0.76 | 3344.602 |   5 | 6467 |    375.07 |      0 |          1 |
+| m3     | NA      | 0.77 | 3039.064 |  46 | 6467 |        NA |     NA |         NA |
+| m3_rnd | NA      | 0.77 | 3167.428 |   9 | 6467 |        NA |     NA |         NA |
+| m4     | NA      | 0.76 | 3111.604 |  11 | 6467 |        NA |     NA |         NA |
+| m5     | NA      | 0.77 | 3073.734 |  11 | 6467 |        NA |     NA |         NA |
+
+AIcc results for BS arrowtooth flounder
+
+### EBS sablefish
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F} -->
+<!--  # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"           -->
+<!--   # [4] "walleye pollock"     "yellowfin sole"  -->
+<!--   sp <- "sablefish" -->
+<!--   fn <- file.path("data","out",reg,sp) -->
+<!--   library(knitr) -->
+<!--   library(dplyr) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'} -->
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg")) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'} -->
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg")) -->
+<!-- ``` -->
+<!-- ```{r echo = FALSE, results = 'asis',message=F}   -->
+<!--   aic_tab <- read.csv(file.path(fn, "aic_table.csv")) -->
+<!--   aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2)) -->
+<!--   kable(aic_tab, caption = paste("AIcc results for ",reg,sp)) -->
+<!--   rm(aic_tab) -->
+<!--   rm(fn) -->
+<!-- ``` -->
+
+### EBS yellowfin sole
+
+<img src="data/out/BS/yellowfin sole/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/BS/yellowfin sole/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model | top_set |   r2 |       nll |   k |             n | delta_aic | aic_wt | sum_aic_wt |
+|:------|:-------|-----:|---------:|---:|------------:|---------:|------:|----------:|
+| m4    | TRUE    | 0.76 |  8935.907 |  11 |    -0.8866068 |      0.00 |      1 |          1 |
+| m2    | FALSE   | 0.76 |  9136.776 |   9 | 16739.0000000 |    418.24 |      0 |          1 |
+| m1    | FALSE   | 0.76 |  9347.177 |   7 | 16739.0000000 |    835.03 |      0 |          1 |
+| m0    | FALSE   | 0.76 |  9358.274 |   5 | 16739.0000000 |    853.22 |      0 |          1 |
+| m3    | FALSE   | 0.69 | 13307.331 |  66 | 16739.0000000 |   8873.87 |      0 |          1 |
+
+AIcc results for BS yellowfin sole
+
+## Gulf of Alaska
+
+### EBS pollock
+
+<!-- ![Comparative model fits to observed weight at age data](Figs/model_plots.jpg) -->
+<!-- ![Temperature effects on weight at age](Figs/model_Temp_byage2.jpg) -->
+
+<img src="data/out/GOA/walleye pollock/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/GOA/walleye pollock/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model  | top_set |   r2 |      nll |   k |             n | delta_aic | aic_wt | sum_aic_wt |
+|:------|:-------|-----:|--------:|---:|------------:|---------:|------:|----------:|
+| m4     | TRUE    | 0.84 | 5010.306 |  11 |    -0.9542845 |      0.00 |      1 |          1 |
+| m5     | FALSE   | 0.84 | 5296.434 |  11 | 10722.0000000 |    592.66 |      0 |          1 |
+| m2     | FALSE   | 0.81 | 5368.963 |   9 | 10722.0000000 |    733.71 |      0 |          1 |
+| m3     | FALSE   | 0.83 | 5426.602 |  53 | 10722.0000000 |    937.51 |      0 |          1 |
+| m1     | FALSE   | 0.81 | 5488.626 |   7 | 10722.0000000 |    969.03 |      0 |          1 |
+| m3_rnd | FALSE   | 0.83 | 5576.810 |   9 | 10722.0000000 |   1149.40 |      0 |          1 |
+| m0     | FALSE   | 0.79 | 5986.006 |   5 | 10722.0000000 |   1959.79 |      0 |          1 |
+
+AIcc results for GOA walleye pollock
+
+### EBS Pacific cod
+
+<img src="data/out/GOA/Pacific cod/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/GOA/Pacific cod/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model  | top_set |   r2 |      nll |   k |            n | delta_aic | aic_wt | sum_aic_wt |
+|:------|:-------|-----:|--------:|---:|------------:|---------:|------:|----------:|
+| m5     | TRUE    | 0.75 | 3330.185 |  11 | 6475.0000000 |      0.00 |      1 |          1 |
+| m3     | FALSE   | 0.74 | 3337.060 |  47 | 6475.0000000 |     86.41 |      0 |          1 |
+| m3_rnd | FALSE   | 0.74 | 3458.854 |   9 | 6475.0000000 |    253.32 |      0 |          1 |
+| m4     | FALSE   | 0.71 | 3492.425 |  11 |   -0.8834478 |    303.95 |      0 |          1 |
+| m2     | FALSE   | 0.71 | 3789.645 |   9 | 6475.0000000 |    914.91 |      0 |          1 |
+| m1     | FALSE   | 0.71 | 3825.098 |   7 | 6475.0000000 |    981.80 |      0 |          1 |
+| m0     | FALSE   | 0.71 | 3933.990 |   5 | 6475.0000000 |   1195.58 |      0 |          1 |
+
+AIcc results for GOA Pacific cod
+
+### EBS arrowtooth flounder
+
+<img src="data/out/GOA/arrowtooth flounder/Figs/model_plots.jpg" alt="Comparative model fits to observed weight at age data" width="100%" />
+<p class="caption">
+Comparative model fits to observed weight at age data
+</p>
+
+<img src="data/out/GOA/arrowtooth flounder/Figs/model_Temp_byage2.jpg" alt="Temperature effects on weight at age" width="100%" />
+<p class="caption">
+Temperature effects on weight at age
+</p>
+
+| model | top_set |   r2 |      nll |   k |            n | delta_aic |    aic_wt | sum_aic_wt |
+|:-----|:-------|-----:|--------:|---:|-----------:|---------:|---------:|----------:|
+| m4    | TRUE    | 0.71 | 3452.232 |  11 |   -0.8167271 |      0.00 | 0.9993974 |     0.9994 |
+| m3    | FALSE   | 0.73 | 3411.931 |  48 | 5716.0000000 |     14.83 | 0.0006026 |     1.0000 |
+| m2    | FALSE   | 0.71 | 3482.078 |   9 | 5716.0000000 |     76.32 | 0.0000000 |     1.0000 |
+| m1    | FALSE   | 0.71 | 3492.948 |   7 | 5716.0000000 |     94.05 | 0.0000000 |     1.0000 |
+| m0    | FALSE   | 0.72 | 3505.724 |   5 | 5716.0000000 |    115.59 | 0.0000000 |     1.0000 |
+| m5    | FALSE   | 0.73 | 3519.829 |  11 | 5716.0000000 |    155.84 | 0.0000000 |     1.0000 |
+
+AIcc results for GOA arrowtooth flounder
+
+### EBS sablefish
+
+<!-- ```{r echo = FALSE, results = 'asis',message=F} -->
+<!--  # 1] "arrowtooth flounder" "Pacific cod"         "sablefish"           -->
+<!--   # [4] "walleye pollock"     "yellowfin sole"  -->
+<!--   sp <- "sablefish" -->
+<!--   fn <- file.path("data","out",reg,sp) -->
+<!--   library(knitr) -->
+<!--   library(dplyr) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE, fig.cap="Comparative model fits to observed weight at age data", out.width = '100%'} -->
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_plots.jpg")) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE, fig.cap="Temperature effects on weight at age", out.width = '100%'} -->
+<!-- knitr::include_graphics(file.path(fn,"Figs", "model_Temp_byage2.jpg")) -->
+<!-- ``` -->
+<!-- ```{r echo = FALSE, results = 'asis',message=F}   -->
+<!--   aic_tab <- read.csv(file.path(fn, "aic_table.csv")) -->
+<!--   aic_tab <- aic_tab%>%select(model,top_set,r2,nll, k, n,  aicc =, delta_aic,aic_wt, sum_aic_wt)%>%mutate(r2=round(r2,2), delta_aic=round(delta_aic,2)) -->
+<!--   kable(aic_tab, caption = paste("AIcc results for ",reg,sp)) -->
+<!--   rm(aic_tab) -->
+<!--   rm(fn) -->
+<!-- ``` -->
+
+### EBS yellowfin sole
+
+# other
