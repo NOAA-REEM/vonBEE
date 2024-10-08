@@ -1,6 +1,5 @@
 #' recompiles the model
 #'
-#' For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
 #'
 #' @param model (without the '.cpp'); default is VonBTv1
 #'

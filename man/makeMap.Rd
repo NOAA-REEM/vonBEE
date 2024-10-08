@@ -11,10 +11,12 @@ makeMap(param = parameters, estpar = estparams)
 
 \item{parameters}{list of starting values and parameters for the TMB futR() model}
 }
+\value{
+maplist a list with map values
+}
 \description{
 This function prepares the estimated data for futR
 This function is a subset of makeDat()
-For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
 }
 \examples{
 
@@ -26,4 +28,5 @@ estparams
 parameters <- atlist$parameters
 parameters
 maplist <- makeMap(param=parameters,estpar=estparams)
+
 }

@@ -13,7 +13,7 @@ recompile(model = "VonBTv1")
 list
 }
 \description{
-For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
+recompiles the model
 }
 \examples{
 recompile(model="VonBTv1")

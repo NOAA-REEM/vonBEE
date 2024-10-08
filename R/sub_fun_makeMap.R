@@ -2,11 +2,10 @@
 #'
 #' This function prepares the estimated data for futR
 #' This function is a subset of makeDat()
-#' For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
 #'
 #' @param parameters  list of starting values and parameters for the TMB futR() model
 #' @param estpar      vector of T/F of which parameters will be estimated
-#' @export            maplist a list with map values
+#' @return            maplist a list with map values
 #'
 #' @examples
 #'
@@ -18,6 +17,7 @@
 #' parameters <- atlist$parameters
 #' parameters
 #' maplist <- makeMap(param=parameters,estpar=estparams)
+#'
 #' @export
 makeMap<-function(param=parameters,estpar=estparams){
   mapseq  <- 1:length(unlist(param))

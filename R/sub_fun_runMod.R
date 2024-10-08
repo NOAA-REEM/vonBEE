@@ -1,8 +1,5 @@
 #' run the vonBT()  model
-#'
 #' runMod() will run the vonBT() recruitment model
-#' @import vonBT
-#' For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
 #'
 #' @param optimizer default is "nlminb"; can also be set to "optim"
 #' @param methodIN  default is NULL, can be set to "Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN", or "Brent"
@@ -22,7 +19,10 @@
 #' @param sim_nitr    number of iterations for the simulate function
 #' @param recompile   recompile the .cpp file? default is 'FALSE'
 #' @param maxitr      10000  Max iterations for fitting the objective function
+#' @param nrep
+#' @param hessianIN
 #' @param maxeval     10000  Max evaluations for fitting the objective function
+#'
 #' @return returns  summary of the model including the mle
 #'
 #' @examples

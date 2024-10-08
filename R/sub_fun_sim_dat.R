@@ -10,7 +10,6 @@
 #'
 #' @returns list(out = cbind(data.frame(W_obs = exp(logWobs),W_hat = What, age=age),t(vonb_cov)),What=What,Wobs=exp(logWobs),age=age, vonb_cov=vonb_cov,d=d, Winf=Winf,nll=nll)
 #'
-
 sim_dat <- function(par=dlistIN_0$par,data = datIN,simulateIT=FALSE){
 
   for(nm in names(par))

@@ -2,7 +2,8 @@
 % Please edit documentation in R/sub_fun_runMod.R
 \name{runMod}
 \alias{runMod}
-\title{run the vonBT()  model}
+\title{run the vonBT()  model
+runMod() will run the vonBT() recruitment model}
 \usage{
 runMod(
   dlistIN,
@@ -59,6 +60,7 @@ runMod(
 returns  summary of the model including the mle
 }
 \description{
+run the vonBT()  model
 runMod() will run the vonBT() recruitment model
 }
 \examples{

@@ -14,9 +14,6 @@ rmd2md(rmd_fl, md_fl = "README")
 \description{
 rmd2md()
 }
-\details{
-For more information contact author Kirstin Holsman (kirstin.holsman@noaa.gov)
-}
 \examples{
 # convert the mymarkdown.Rmd to README.md
 rmd2md(rmd_fl="mymarkdown",md_fl = "README")
