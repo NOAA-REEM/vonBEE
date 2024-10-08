@@ -2,8 +2,3 @@
 .Rhistory
 .RData
 .Ruserdata
-*NotShared
-data/out
-data\out
-.DS*
-._*

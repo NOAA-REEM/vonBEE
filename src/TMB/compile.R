@@ -1,4 +1,4 @@
-tmb_name <- "vonBTv1"
+tmb_name <- "vonBEE_TMBExports"
 tmb_flags <- commandArgs(trailingOnly = TRUE)
 
 if(file.exists(paste0(tmb_name, ".cpp"))) {
