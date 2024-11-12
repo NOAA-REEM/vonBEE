@@ -1,6 +1,6 @@
 ---
 title: "VonBEE: State-space vonB growth model with environmental covariates"
-author: K. K. Holsman, J. Ianelli, et al.
+author: K. K. Holsman, K. Aydin, J. Ianelli, et al.
 output:
   html_document:
     df_print: kable

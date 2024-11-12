@@ -9,13 +9,6 @@
 #'
 #' @examples
 #'
-#' datlist   <- readMake_futR_data("data/in/futR_Inputs.xlsx" )
-#'
-#' estparams <- datlist$estparams
-#' estparams
-#'
-#' parameters <- atlist$parameters
-#' parameters
 #' maplist <- makeMap(param=parameters,estpar=estparams)
 #'
 #' @export
